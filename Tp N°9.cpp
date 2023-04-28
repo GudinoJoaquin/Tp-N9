@@ -9,7 +9,7 @@ int cambiarDictado(string p);
 int main() {
 
 	VideoMode vm(350, 90);
-	RenderWindow window(vm, "Tp N°9");
+	RenderWindow window(vm, "Tp NÂ°9");
 
 	string p;
 
@@ -58,12 +58,27 @@ int main() {
 	return 0;
 }
 
-int cambiarDictado(string p) {
-
-	int letras = 0;
-
-	for (int i = 0; i < p.size(); i++) {
-		letras++;
+int cambiarDictado(string p){
+	
+	string np;
+	
+	for(int i = 0 ; i < p.size() ; i++){
+		if(p[i] == ' '){
+			i++;
+		}
+		else{
+			np += p[i];
+		}
 	}
-	return letras - 1;
+	
+	int l = np.size();
+	
+	for(int i = 0 ; i < l/2 ; i++){
+		if(np[i] != np[l - i - 1]){
+			return l-1;
+		}
+	}
+	
+	return 0;
 }
+	
